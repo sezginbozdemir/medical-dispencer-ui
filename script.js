@@ -274,13 +274,22 @@ makeSlider({
   primary: false,
 });
 
+// Tab bar
+
 const tabWrappers = document.querySelectorAll(".tab-bar_wrapper");
 
 tabWrappers.forEach((wrapper) => {
   wrapper.addEventListener("click", () => {
-    // Remove active from all
     tabWrappers.forEach((w) => w.classList.remove("active"));
-    // Add active to the clicked one
     wrapper.classList.add("active");
   });
+});
+
+// Graph Widget
+
+const graphWidgetBars = document.querySelectorAll(".graph-widget_bar-fill");
+
+graphWidgetBars.forEach((bar) => {
+  const randomHeight = Math.floor(Math.random() * 101);
+  bar.style.height = randomHeight + "%";
 });
