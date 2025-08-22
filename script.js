@@ -223,3 +223,64 @@ toggles.forEach((toggle) => {
     }
   });
 });
+
+// Sliders
+
+function makeSlider({ handle, bar, filled, primary }) {
+  let dragging = false;
+
+  handle.addEventListener("mousedown", () => {
+    dragging = true;
+    document.body.style.userSelect = "none";
+  });
+
+  document.addEventListener("mouseup", () => {
+    dragging = false;
+    document.body.style.userSelect = "auto";
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+
+    const barRect = bar.getBoundingClientRect();
+    const handleRect = handle.getBoundingClientRect();
+    const handleHalf = handleRect.width / 2;
+
+    let x = e.clientX - barRect.left;
+
+    primary
+      ? (x = Math.max(handleHalf, Math.min(x, barRect.width - handleHalf)))
+      : (x = Math.max(0, Math.min(x, barRect.width)));
+
+    handle.style.left = `${x}px`;
+
+    if (filled) {
+      filled.style.width = `${x}px`;
+    }
+  });
+}
+
+makeSlider({
+  handle: document.getElementById("sliderHandle"),
+  bar: document.getElementById("sliderPrimary"),
+  filled: null,
+  primary: true,
+});
+
+makeSlider({
+  handle: document.getElementById("sliderDrag"),
+  bar: document.getElementById("sliderBar"),
+  filled: document.getElementById("sliderFilled"),
+  primary: false,
+});
+
+const tabWrappers = document.querySelectorAll(".tab-bar_wrapper");
+
+tabWrappers.forEach((wrapper) => {
+  wrapper.addEventListener("click", () => {
+    // Remove active from all
+    tabWrappers.forEach((w) => w.classList.remove("active"));
+    // Add active to the clicked one
+    wrapper.classList.add("active");
+  });
+});

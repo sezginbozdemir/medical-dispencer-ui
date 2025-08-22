@@ -8,378 +8,453 @@
     <script defer src="script.js"></script>
   </head>
   <body>
-    <div class="indicators">
-      <div class="sensors">
-        <!-- Clock -->
-        <div class="clock" id="clock">
-          <div class="clock-hand clock-hand_hour" id="hourHand"></div>
-          <div class="clock-hand clock-hand_minute" id="minuteHand"></div>
-        </div>
-        <!-- Pressure Widget -->
-        <div
-          class="pressure-widget"
-          id="pressureWidget"
-          data-sensor="pressure"
-          data-max="100"
-        >
-          <div class="pressure-widget_data">
-            <div class="pressure-widget_label">Pressure inside</div>
-            <div class="pressure-widget_value">80<span>kPa</span></div>
-            <div class="pressure-widget_bars" id="pressureBars"></div>
+    <div style="display: flex; justify-content: center; gap: 10rem">
+      <div style="display: flex; flex-direction: column; gap: 3rem">
+        <div style="display: flex; gap: 3rem">
+          <!-- Clock -->
+          <div class="clock" id="clock">
+            <div class="clock-hand clock-hand_hour" id="hourHand"></div>
+            <div class="clock-hand clock-hand_minute" id="minuteHand"></div>
           </div>
-          <div class="pressure-widget_container">
-            <div class="pressure-widget_progress"></div>
+          <!-- Pressure Widget -->
+          <div
+            class="pressure-widget"
+            id="pressureWidget"
+            data-sensor="pressure"
+            data-max="100"
+          >
+            <div class="pressure-widget_data">
+              <div class="pressure-widget_label">Pressure inside</div>
+              <div class="pressure-widget_value">80<span>kPa</span></div>
+              <div class="pressure-widget_bars" id="pressureBars"></div>
+            </div>
+            <div class="pressure-widget_container">
+              <div class="pressure-widget_progress"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sensor Widgets -->
+        <div style="display: flex; gap: 3rem">
+          <!-- Temperature Inside -->
+
+          <div
+            class="sensor-widget sensor-widget_large sensor-widget_green"
+            id="tempInside"
+            data-sensor="temperature"
+            data-max="50"
+          >
+            <div class="sensor-widget_container">
+              <svg class="sensor-widget_ring" viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient
+                    id="greenGradient"
+                    cx="10.41%"
+                    cy="88.14%"
+                    r="89.59%"
+                  >
+                    <stop offset="0%" style="stop-color: #78e3bd" />
+                    <stop offset="94.27%" style="stop-color: #2cd99b" />
+                  </radialGradient>
+                </defs>
+                <circle
+                  class="sensor-widget_progress"
+                  cx="100"
+                  cy="100"
+                  r="91"
+                ></circle>
+              </svg>
+              <div class="sensor-widget_content">
+                <div class="sensor-widget_data">
+                  <div class="sensor-widget_label">temp</div>
+                  <div class="sensor-widget_value">22°C</div>
+                </div>
+                <div class="sensor-widget_loc">inside</div>
+              </div>
+            </div>
+          </div>
+          <!-- Temperature Outside -->
+
+          <div
+            class="sensor-widget sensor-widget_small sensor-widget_yellow"
+            id="tempOutside"
+            data-sensor="temperature"
+            data-max="50"
+          >
+            <div class="sensor-widget_container">
+              <svg class="sensor-widget_ring" viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient
+                    id="yellowGradient"
+                    cx="10.41%"
+                    cy="88.14%"
+                    r="89.59%"
+                  >
+                    <stop offset="0%" style="stop-color: #dfe378" />
+                    <stop offset="94.27%" style="stop-color: #d9b12c" />
+                  </radialGradient>
+                </defs>
+                <circle
+                  class="sensor-widget_progress"
+                  cx="100"
+                  cy="100"
+                  r="91"
+                ></circle>
+              </svg>
+              <div class="sensor-widget_content">
+                <div class="sensor-widget_data">
+                  <div class="sensor-widget_label">temp</div>
+                  <div class="sensor-widget_value">12°C</div>
+                </div>
+                <div class="sensor-widget_loc">outside</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 3rem">
+          <!-- Humidity Inside -->
+
+          <div
+            class="sensor-widget sensor-widget_large sensor-widget_blue"
+            id="humidityInside"
+            data-sensor="humidity"
+            data-max="100"
+          >
+            <div class="sensor-widget_container">
+              <svg class="sensor-widget_ring" viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient
+                    id="blueGradient"
+                    cx="10.41%"
+                    cy="88.14%"
+                    r="89.59%"
+                  >
+                    <stop offset="0%" style="stop-color: #78aae3" />
+                    <stop offset="94.27%" style="stop-color: #2c69d9" />
+                  </radialGradient>
+                </defs>
+                <circle
+                  class="sensor-widget_progress"
+                  cx="100"
+                  cy="100"
+                  r="91"
+                ></circle>
+              </svg>
+              <div class="sensor-widget_content">
+                <div class="sensor-widget_data">
+                  <div class="sensor-widget_label">humidity</div>
+                  <div class="sensor-widget_value">78%</div>
+                </div>
+                <div class="sensor-widget_loc">inside</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Humidity Outside -->
+
+          <div
+            class="sensor-widget_blue sensor-widget_small sensor-widget"
+            id="humidityOutside"
+            data-sensor="humidity"
+            data-max="100"
+          >
+            <div class="sensor-widget_container">
+              <svg class="sensor-widget_ring" viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient
+                    id="blueGradient"
+                    cx="10.41%"
+                    cy="88.14%"
+                    r="89.59%"
+                  >
+                    <stop offset="0%" style="stop-color: #78aae3" />
+                    <stop offset="94.27%" style="stop-color: #2c69d9" />
+                  </radialGradient>
+                </defs>
+                <circle
+                  class="sensor-widget_progress"
+                  cx="100"
+                  cy="100"
+                  r="91"
+                ></circle>
+              </svg>
+              <div class="sensor-widget_content">
+                <div class="sensor-widget_data">
+                  <div class="sensor-widget_label">humidity</div>
+                  <div class="sensor-widget_value">54%</div>
+                </div>
+                <div class="sensor-widget_loc">outside</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Sensor Widgets -->
-      <div class="sensors">
-        <!-- Temperature Inside -->
-
-        <div
-          class="sensor-widget sensor-widget_large sensor-widget_green"
-          id="tempInside"
-          data-sensor="temperature"
-          data-max="50"
-        >
-          <div class="sensor-widget_container">
-            <svg class="sensor-widget_ring" viewBox="0 0 200 200">
-              <defs>
-                <radialGradient
-                  id="greenGradient"
-                  cx="10.41%"
-                  cy="88.14%"
-                  r="89.59%"
-                >
-                  <stop offset="0%" style="stop-color: #78e3bd" />
-                  <stop offset="94.27%" style="stop-color: #2cd99b" />
-                </radialGradient>
-              </defs>
-              <circle
-                class="sensor-widget_progress"
-                cx="100"
-                cy="100"
-                r="91"
-              ></circle>
-            </svg>
-            <div class="sensor-widget_content">
-              <div class="sensor-widget_data">
-                <div class="sensor-widget_label">temp</div>
-                <div class="sensor-widget_value">22°C</div>
-              </div>
-              <div class="sensor-widget_loc">inside</div>
-            </div>
-          </div>
+      <!-- Buttons -->
+      <div style="gap: 3rem; display: flex; flex-direction: column">
+        <div style="display: flex; gap: 20px">
+          <button class="btn btn-primary">button</button>
+          <button class="btn btn-secondary">button</button>
         </div>
-        <!-- Temperature Outside -->
-
-        <div
-          class="sensor-widget sensor-widget_small sensor-widget_yellow"
-          id="tempOutside"
-          data-sensor="temperature"
-          data-max="50"
-        >
-          <div class="sensor-widget_container">
-            <svg class="sensor-widget_ring" viewBox="0 0 200 200">
-              <defs>
-                <radialGradient
-                  id="yellowGradient"
-                  cx="10.41%"
-                  cy="88.14%"
-                  r="89.59%"
-                >
-                  <stop offset="0%" style="stop-color: #dfe378" />
-                  <stop offset="94.27%" style="stop-color: #d9b12c" />
-                </radialGradient>
-              </defs>
-              <circle
-                class="sensor-widget_progress"
-                cx="100"
-                cy="100"
-                r="91"
-              ></circle>
-            </svg>
-            <div class="sensor-widget_content">
-              <div class="sensor-widget_data">
-                <div class="sensor-widget_label">temp</div>
-                <div class="sensor-widget_value">12°C</div>
-              </div>
-              <div class="sensor-widget_loc">outside</div>
-            </div>
-          </div>
+        <div style="display: flex; gap: 20px">
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            0
+          </button>
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            1
+          </button>
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            2
+          </button>
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            3
+          </button>
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            4
+          </button>
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            5
+          </button>
         </div>
-      </div>
-      <div class="sensors">
-        <!-- Humidity Inside -->
-
-        <div
-          class="sensor-widget sensor-widget_large sensor-widget_blue"
-          id="humidityInside"
-          data-sensor="humidity"
-          data-max="100"
-        >
-          <div class="sensor-widget_container">
-            <svg class="sensor-widget_ring" viewBox="0 0 200 200">
-              <defs>
-                <radialGradient
-                  id="blueGradient"
-                  cx="10.41%"
-                  cy="88.14%"
-                  r="89.59%"
-                >
-                  <stop offset="0%" style="stop-color: #78aae3" />
-                  <stop offset="94.27%" style="stop-color: #2c69d9" />
-                </radialGradient>
-              </defs>
-              <circle
-                class="sensor-widget_progress"
-                cx="100"
-                cy="100"
-                r="91"
-              ></circle>
-            </svg>
-            <div class="sensor-widget_content">
-              <div class="sensor-widget_data">
-                <div class="sensor-widget_label">humidity</div>
-                <div class="sensor-widget_value">78%</div>
-              </div>
-              <div class="sensor-widget_loc">inside</div>
-            </div>
-          </div>
+        <div style="display: flex; gap: 20px">
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            6
+          </button>
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            7
+          </button>
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            8
+          </button>
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            9
+          </button>
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            #
+          </button>
+          <button class="btn btn-secondary btn-numeric btn-square_large">
+            *
+          </button>
         </div>
-
-        <!-- Humidity Outside -->
-
-        <div
-          class="sensor-widget_blue sensor-widget_small sensor-widget"
-          id="humidityOutside"
-          data-sensor="humidity"
-          data-max="100"
-        >
-          <div class="sensor-widget_container">
-            <svg class="sensor-widget_ring" viewBox="0 0 200 200">
-              <defs>
-                <radialGradient
-                  id="blueGradient"
-                  cx="10.41%"
-                  cy="88.14%"
-                  r="89.59%"
-                >
-                  <stop offset="0%" style="stop-color: #78aae3" />
-                  <stop offset="94.27%" style="stop-color: #2c69d9" />
-                </radialGradient>
-              </defs>
-              <circle
-                class="sensor-widget_progress"
-                cx="100"
-                cy="100"
-                r="91"
-              ></circle>
-            </svg>
-            <div class="sensor-widget_content">
-              <div class="sensor-widget_data">
-                <div class="sensor-widget_label">humidity</div>
-                <div class="sensor-widget_value">54%</div>
-              </div>
-              <div class="sensor-widget_loc">outside</div>
-            </div>
+        <div style="display: flex; gap: 20px">
+          <button class="btn btn-secondary btn-square_small">
+            <img src="icons/sort.svg" class="btn-icon_small" />
+          </button>
+          <button class="btn btn-secondary btn-square_small">
+            <img src="icons/chevron.svg" class="btn-icon_small" />
+          </button>
+          <button class="btn btn-secondary btn-square_small">
+            <img src="icons/minus.svg" class="btn-icon_small" />
+          </button>
+          <button class="btn btn-secondary btn-square_small">
+            <img src="icons/plus.svg" class="btn-icon_small" />
+          </button>
+        </div>
+        <div style="display: flex; gap: 20px">
+          <button class="btn btn-secondary btn-square_large">
+            <img src="icons/sort_large.svg" class="btn-icon_large" />
+          </button>
+          <button class="btn btn-secondary btn-square_large">
+            <img src="icons/chevron_large.svg" class="btn-icon_large" />
+          </button>
+          <button class="btn btn-secondary btn-square_large">
+            <img src="icons/minus_large.svg" class="btn-icon_large" />
+          </button>
+          <button class="btn btn-secondary btn-square_large">
+            <img src="icons/plus_large.svg" class="btn-icon_large" />
+          </button>
+          <button class="btn btn-secondary btn-square_large">
+            <img src="icons/gear.svg" class="btn-icon_large" />
+          </button>
+          <button class="btn btn-secondary btn-square_large">
+            <img src="icons/tick.svg" class="btn-icon_large" />
+          </button>
+        </div>
+        <div style="display: flex; gap: 20px">
+          <div class="btn-start_wrapper">
+            <button class="btn-start">start</button>
           </div>
+          <button class="btn-power">
+            <img src="icons/power.svg" class="btn-power_icon" />
+          </button>
         </div>
       </div>
     </div>
-    <!-- Buttons -->
-    <div class="buttons">
-      <div class="buttons-default">
-        <button class="btn btn-primary">button</button>
-        <button class="btn btn-secondary">button</button>
-      </div>
-      <div class="buttons-numbers">
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          0
-        </button>
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          1
-        </button>
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          2
-        </button>
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          3
-        </button>
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          4
-        </button>
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          5
-        </button>
-      </div>
-      <div class="buttons-numbers">
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          6
-        </button>
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          7
-        </button>
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          8
-        </button>
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          9
-        </button>
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          #
-        </button>
-        <button class="btn btn-secondary btn-numeric btn-square_large">
-          *
-        </button>
-      </div>
-      <div class="buttons-numbers">
-        <button class="btn btn-secondary btn-square_small">
-          <img src="icons/sort.svg" class="btn-icon_small" />
-        </button>
-        <button class="btn btn-secondary btn-square_small">
-          <img src="icons/chevron.svg" class="btn-icon_small" />
-        </button>
-        <button class="btn btn-secondary btn-square_small">
-          <img src="icons/minus.svg" class="btn-icon_small" />
-        </button>
-        <button class="btn btn-secondary btn-square_small">
-          <img src="icons/plus.svg" class="btn-icon_small" />
-        </button>
-      </div>
-      <div class="buttons-numbers">
-        <button class="btn btn-secondary btn-square_large">
-          <img src="icons/sort_large.svg" class="btn-icon_large" />
-        </button>
-        <button class="btn btn-secondary btn-square_large">
-          <img src="icons/chevron_large.svg" class="btn-icon_large" />
-        </button>
-        <button class="btn btn-secondary btn-square_large">
-          <img src="icons/minus_large.svg" class="btn-icon_large" />
-        </button>
-        <button class="btn btn-secondary btn-square_large">
-          <img src="icons/plus_large.svg" class="btn-icon_large" />
-        </button>
-        <button class="btn btn-secondary btn-square_large">
-          <img src="icons/gear.svg" class="btn-icon_large" />
-        </button>
-        <button class="btn btn-secondary btn-square_large">
-          <img src="icons/tick.svg" class="btn-icon_large" />
-        </button>
-      </div>
-      <div class="buttons-numbers">
-        <div class="btn-start_wrapper">
-          <button class="btn-start">start</button>
+    <!-- Progress Wheel -->
+
+    <div style="display: flex; justify-content: center; gap: 10rem">
+      <div style="display: flex; flex-direction: column; gap: 3rem">
+        <div style="display: flex; gap: 30px">
+          <div class="progress-wheel" id="progressWheel" data-max="100">
+            <div class="progress-wheel_container">
+              <div class="progress-wheel_value">60%</div>
+
+              <svg class="progress-wheel_ring" viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient
+                    id="greenGradient"
+                    cx="10.41%"
+                    cy="88.14%"
+                    r="89.59%"
+                  >
+                    <stop offset="0%" style="stop-color: #78e3bd" />
+                    <stop offset="94.27%" style="stop-color: #2cd99b" />
+                  </radialGradient>
+                </defs>
+                <circle
+                  class="progress-wheel_fill"
+                  cx="100"
+                  cy="100"
+                  r="72"
+                ></circle>
+              </svg>
+
+              <div class="progress-wheel_button_wrapper">
+                <button class="progress-wheel_button">
+                  <img src="icons/plus_large.svg" /> <br />
+                  ADD
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Temperature Slider -->
+
+          <div class="temperature-slider" id="tempSlider" data-max="50">
+            <div class="temperature-slider_handle" id="tempSliderHandle"></div>
+            <div class="temperature-slider_inner">
+              <div class="temperature-slider_value" id="tempSliderValue">
+                13.5°C
+              </div>
+            </div>
+          </div>
         </div>
-        <button class="btn-power">
-          <img src="icons/power.svg" class="btn-power_icon" />
-        </button>
+        <!-- Inputs -->
+
+        <div style="display: flex; flex-direction: column; gap: 20px">
+          <div class="text-input text-input_rounded">
+            <label for="name">Numele:</label>
+            <div class="text-input_wrapper">
+              <input
+                placeholder="e.g. Marian"
+                type="text"
+                id="name"
+                name="name"
+              />
+            </div>
+          </div>
+
+          <div class="text-input text-input_square">
+            <label for="lastname">Prenumele:</label>
+            <div class="text-input_wrapper">
+              <input
+                placeholder="e.g. Tomoiaga"
+                type="text"
+                id="lastname"
+                name="lastname"
+              />
+            </div>
+          </div>
+
+          <!-- Toggle -->
+
+          <div style="display: flex; gap: 20px">
+            <div class="toggle">
+              <div class="toggle-handle">
+                <img src="icons/lock.svg" />
+              </div>
+            </div>
+
+            <div class="toggle active">
+              <div class="toggle-handle">
+                <img src="icons/lock.svg" />
+              </div>
+            </div>
+            <div class="toggle restricted">
+              <div class="toggle-handle">
+                <img src="icons/lock.svg" />
+              </div>
+            </div>
+            <div class="toggle active restricted">
+              <div class="toggle-handle">
+                <img src="icons/lock.svg" />
+              </div>
+            </div>
+          </div>
+          <!-- Checkbox -->
+          <div style="display: flex; gap: 20px">
+            <div class="checkbox">
+              <input type="checkbox" id="checkbox" name="checkbox" />
+              <label for="checkbox">checkbox</label>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      <div style="display: flex; flex-direction: column; gap: 3rem">
+        <!-- Sliders -->
 
-    <div class="buttons">
-      <!-- Progress Wheel -->
-      <div style="display: flex; gap: 30px">
-        <div class="progress-wheel" id="progressWheel" data-max="100">
-          <div class="progress-wheel_container">
-            <div class="progress-wheel_value">60%</div>
+        <div class="slider-primary_container">
+          <div class="slider-primary" id="sliderPrimary">
+            <div class="slider-primary_wrapper" id="sliderHandle">
+              <div class="slider-primary_handle">
+                <div class="slider-primary_line"></div>
+                <div class="slider-primary_line long"></div>
+                <div class="slider-primary_line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-secondary" id="sliderBar">
+          <div class="slider-secondary_filled" id="sliderFilled"></div>
+          <div class="slider-secondary_handle" id="sliderDrag">
+            <div class="slider-secondary_line"></div>
+            <div class="slider-secondary_line"></div>
+          </div>
+        </div>
 
-            <svg class="progress-wheel_ring" viewBox="0 0 200 200">
-              <defs>
-                <radialGradient
-                  id="greenGradient"
-                  cx="10.41%"
-                  cy="88.14%"
-                  r="89.59%"
-                >
-                  <stop offset="0%" style="stop-color: #78e3bd" />
-                  <stop offset="94.27%" style="stop-color: #2cd99b" />
-                </radialGradient>
-              </defs>
-              <circle
-                class="progress-wheel_fill"
-                cx="100"
-                cy="100"
-                r="72"
-              ></circle>
-            </svg>
+        <!-- Tab Bar -->
 
-            <div class="progress-wheel_button_wrapper">
-              <button class="progress-wheel_button">
-                <img src="icons/plus_large.svg" /> <br />
-                ADD
+        <div class="tab-bar_container">
+          <div class="tab-bar">
+            <div class="tab-bar_wrapper">
+              <button class="tab-bar_button">
+                <img src="icons/calendar.svg" />
+              </button>
+            </div>
+
+            <div class="tab-bar_wrapper active">
+              <button class="tab-bar_button">
+                <img src="icons/phone.svg" />
+              </button>
+            </div>
+
+            <div class="tab-bar_wrapper">
+              <button class="tab-bar_button">
+                <img src="icons/bookmark.svg" />
+              </button>
+            </div>
+
+            <div class="tab-bar_wrapper">
+              <button class="tab-bar_button">
+                <img src="icons/settings.svg" />
               </button>
             </div>
           </div>
         </div>
-        <!-- Temperature Slider -->
-
-        <div class="temperature-slider" id="tempSlider" data-max="50">
-          <div class="temperature-slider_handle" id="tempSliderHandle"></div>
-          <div class="temperature-slider_inner">
-            <div class="temperature-slider_value" id="tempSliderValue">
-              13.5°C
+        <div class="select-item_container">
+          <div class="select-item">
+            <div class="select-item_details">
+              <div class="select-item_wrapper">
+                <div class="select-item_icon">
+                  <img src="icons/maps.svg" />
+                </div>
+              </div>
+              <div class="select-item_data">
+                <div class="select-item_title">Titlu</div>
+                <div class="select-item_subtitle">Subtitlu</div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <!-- Inputs -->
-
-      <div style="display: flex; flex-direction: column; gap: 20px">
-        <div class="text-input text-input_rounded">
-          <label for="name">Numele:</label>
-          <div class="text-input_wrapper">
-            <input
-              placeholder="e.g. Marian"
-              type="text"
-              id="name"
-              name="name"
-            />
-          </div>
-        </div>
-
-        <div class="text-input text-input_square">
-          <label for="lastname">Prenumele:</label>
-          <div class="text-input_wrapper">
-            <input
-              placeholder="e.g. Tomoiaga"
-              type="text"
-              id="lastname"
-              name="lastname"
-            />
-          </div>
-        </div>
-
-        <!-- Toggle -->
-
-        <div style="display: flex; gap: 20px">
-          <div class="toggle">
-            <div class="toggle-handle">
-              <img src="icons/lock.svg" />
+            <div class="select-item_chevron">
+              <img src="icons/green-chevron.svg" />
             </div>
-          </div>
-
-          <div class="toggle active">
-            <div class="toggle-handle">
-              <img src="icons/lock.svg" />
-            </div>
-          </div>
-          <div class="toggle restricted">
-            <div class="toggle-handle">
-              <img src="icons/lock.svg" />
-            </div>
-          </div>
-          <div class="toggle active restricted">
-            <div class="toggle-handle">
-              <img src="icons/lock.svg" />
-            </div>
-          </div>
-        </div>
-        <div style="display: flex; gap: 20px">
-          <div class="checkbox">
-            <input type="checkbox" id="checkbox" name="checkbox" />
-            <label for="checkbox">checkbox</label>
           </div>
         </div>
       </div>
