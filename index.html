@@ -614,6 +614,24 @@
           <svg class="progress-widget_ring" viewBox="0 0 200 200">
             <defs>
               <linearGradient
+                id="shadowGradient"
+                x1="0%"
+                y1="0%"
+                x2="0%"
+                y2="100%"
+              >
+                <stop offset="0%" style="stop-color: rgba(0, 0, 0, 0.3)" />
+                <stop offset="30%" style="stop-color: rgba(0, 0, 0, 0.1)" />
+                <stop
+                  offset="70%"
+                  style="stop-color: rgba(255, 255, 255, 0.1)"
+                />
+                <stop
+                  offset="100%"
+                  style="stop-color: rgba(255, 255, 255, 0.2)"
+                />
+              </linearGradient>
+              <linearGradient
                 id="trackGradient"
                 x1="0%"
                 y1="0%"
@@ -642,12 +660,19 @@
               </radialGradient>
             </defs>
             <path
+              d="M 25 110 A 70 65 0 0 1 175 110"
+              stroke="url(#shadowGradient)"
+              stroke-width="13"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <path
               class="progress-widget_track"
-              d="M 35 110 A 70 70 0 0 1 175 110"
+              d="M 25 110 A 70 65 0 0 1 175 110"
             />
             <path
               class="progress-widget_fill"
-              d="M 35 110 A 70 70 0 0 1 175 110"
+              d="M 25 110 A 70 65 0 0 1 175 110"
               id="progressPath"
             />
           </svg>
@@ -656,12 +681,13 @@
               <p>5<span>8</span></p>
               <p>kPa</p>
             </div>
-
-            <div class="progress-wheel_button_wrapper">
-              <button class="progress-wheel_button">
-                <img src="icons/plus_large.svg" /> <br />
-                ADD
-              </button>
+            <div class="progress-widget_btn-group">
+              <div class="progress-wheel_button_wrapper">
+                <button class="progress-wheel_button">
+                  <img src="icons/plus_large.svg" />
+                </button>
+              </div>
+              <p>add</p>
             </div>
           </div>
         </div>
