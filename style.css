@@ -1063,6 +1063,8 @@ body {
 /*  ======= Select Item ======= */
 
 .select-item_container {
+  position: relative;
+  cursor: pointer;
   width: 297px;
   height: 56px;
   border-radius: 6px;
@@ -1153,6 +1155,56 @@ body {
   align-items: center;
 }
 
+.select-item_dropdown {
+  position: absolute;
+  width: 100%;
+  height: 250px;
+  top: 110%;
+  left: 0;
+  background: var(--color-bg-primary);
+  border-radius: 9px;
+  box-shadow:
+    -4px -4px 14px 0px #ffffff,
+    12px 12px 16px 0px #a4aeb726,
+    0px 4px 4px 0px #a4aeb740;
+
+  padding: 10px;
+  z-index: 100;
+  display: flex;
+  gap: 10px;
+
+  .slider-primary_container {
+    width: 16px;
+    height: 100%;
+  }
+  .slider-primary_wrapper {
+    width: 15px;
+    height: 50px;
+    left: 50%;
+    top: 25px;
+  }
+}
+.select-item_list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-height: 250px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.select-item_dropdown-item {
+  border-radius: 7px;
+  padding: 4px;
+}
+.select-item_dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
 /*  ======= Graph Widget ======= */
 
 .graph-widget {
@@ -1318,4 +1370,111 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+/*  ======= Progress Widget ======= */
+
+.progress-widget {
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 343px;
+  height: 379px;
+  border-radius: 14px;
+  background:
+    linear-gradient(0deg, #e3edf7, #e3edf7),
+    linear-gradient(
+      308.48deg,
+      rgba(255, 255, 255, 0.53) 2.36%,
+      rgba(255, 255, 255, 0) 61.95%
+    );
+  border: 1px solid;
+  border-image-source: linear-gradient(
+    267.62deg,
+    rgba(214, 227, 243, 0.46) 8.2%,
+    rgba(255, 255, 255, 0.46) 82.68%
+  );
+
+  box-shadow:
+    4px 4px 20px 0px #6f8cb069,
+    -6px -6px 20px 0px #ffffff,
+    2px 2px 4px 0px #728eab1a;
+}
+
+.progress-widget_labels {
+  font-family: Raleway;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--color-line);
+}
+.progress-widget_labels p {
+  font-weight: 700;
+  font-size: 18px;
+}
+.progress-widget_labels span {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.progress-widget_fill {
+  stroke-width: 13;
+  stroke: url(#greenGradient);
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.5s ease;
+  stroke-dashoffset: 0;
+}
+
+.progress-widget_track {
+  stroke: url(#trackGradient);
+  stroke-width: 13;
+  fill: none;
+  stroke-linecap: round;
+  background: var(--color-bg-primary);
+}
+
+.progress-widget_ring {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 60px;
+  left: -10px;
+}
+.progress-widget_group {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  position: relative;
+  height: 200px;
+}
+
+.progress-widget_value {
+  font-family: Raleway;
+  color: var(--color-line);
+  opacity: 0.7;
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  position: absolute;
+  top: 25px;
+
+  > :first-child {
+    font-weight: 800;
+    font-size: 90px;
+    letter-spacing: -5px;
+  }
+  > :last-child {
+    padding-bottom: 15px;
+    letter-spacing: -5px;
+    font-weight: 800;
+    font-size: 40px;
+  }
 }

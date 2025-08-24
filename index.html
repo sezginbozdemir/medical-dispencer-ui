@@ -466,7 +466,9 @@
             </div>
           </div>
         </div>
-        <div class="select-item_container">
+        <!-- Select Item -->
+
+        <div class="select-item_container" id="customSelect">
           <div class="select-item">
             <div class="select-item_details">
               <div class="select-item_wrapper">
@@ -481,6 +483,72 @@
             </div>
             <div class="select-item_chevron">
               <img src="icons/green-chevron.svg" />
+            </div>
+          </div>
+          <div class="select-item_dropdown hidden">
+            <div class="select-item_list">
+              <div class="select-item_dropdown-item">
+                <div class="select-item_data">
+                  <div class="select-item_title">Titlu 1</div>
+                  <div class="select-item_subtitle">Subtitlu 1</div>
+                </div>
+              </div>
+              <div class="select-item_dropdown-item">
+                <div class="select-item_data">
+                  <div class="select-item_title">Titlu 2</div>
+                  <div class="select-item_subtitle">Subtitlu 2</div>
+                </div>
+              </div>
+              <div class="select-item_dropdown-item">
+                <div class="select-item_data">
+                  <div class="select-item_title">Titlu 2</div>
+                  <div class="select-item_subtitle">Subtitlu 2</div>
+                </div>
+              </div>
+
+              <div class="select-item_dropdown-item">
+                <div class="select-item_data">
+                  <div class="select-item_title">Titlu 2</div>
+                  <div class="select-item_subtitle">Subtitlu 2</div>
+                </div>
+              </div>
+              <div class="select-item_dropdown-item">
+                <div class="select-item_data">
+                  <div class="select-item_title">Titlu 2</div>
+                  <div class="select-item_subtitle">Subtitlu 2</div>
+                </div>
+              </div>
+              <div class="select-item_dropdown-item">
+                <div class="select-item_data">
+                  <div class="select-item_title">Titlu 2</div>
+                  <div class="select-item_subtitle">Subtitlu 2</div>
+                </div>
+              </div>
+
+              <div class="select-item_dropdown-item">
+                <div class="select-item_data">
+                  <div class="select-item_title">Titlu 2</div>
+                  <div class="select-item_subtitle">Subtitlu 2</div>
+                </div>
+              </div>
+
+              <div class="select-item_dropdown-item">
+                <div class="select-item_data">
+                  <div class="select-item_title">Titlu 2</div>
+                  <div class="select-item_subtitle">Subtitlu 2</div>
+                </div>
+              </div>
+            </div>
+            <div class="slider-primary_container" id="scrollContainer">
+              <div class="slider-primary" id="scrollPrimary">
+                <div class="slider-primary_wrapper" id="scrollHandle">
+                  <div class="slider-primary_handle">
+                    <div class="slider-primary_line"></div>
+                    <div class="slider-primary_line long"></div>
+                    <div class="slider-primary_line"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -533,6 +601,68 @@
               <div class="graph-widget_bar-fill"></div>
             </div>
             <div class="graph-widget_x-label">Jun</div>
+          </div>
+        </div>
+        <!-- Progress Widget -->
+
+        <div class="progress-widget" id="progressWidget" data-max="120">
+          <div class="progress-widget_labels">
+            <p>Pressure level</p>
+            <span>You are at 68%</span>
+          </div>
+
+          <svg class="progress-widget_ring" viewBox="0 0 200 200">
+            <defs>
+              <linearGradient
+                id="trackGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+                gradientTransform="rotate(122.51)"
+              >
+                <stop
+                  offset="16.62%"
+                  style="stop-color: #d6e3f3; stop-opacity: 0.46"
+                />
+                <stop
+                  offset="56.74%"
+                  style="stop-color: #ffffff; stop-opacity: 0.46"
+                />
+              </linearGradient>
+
+              <radialGradient
+                id="greenGradient"
+                cx="10.41%"
+                cy="88.14%"
+                r="89.59%"
+              >
+                <stop offset="0%" style="stop-color: #78e3bd" />
+                <stop offset="94.27%" style="stop-color: #2cd99b" />
+              </radialGradient>
+            </defs>
+            <path
+              class="progress-widget_track"
+              d="M 35 110 A 70 70 0 0 1 175 110"
+            />
+            <path
+              class="progress-widget_fill"
+              d="M 35 110 A 70 70 0 0 1 175 110"
+              id="progressPath"
+            />
+          </svg>
+          <div class="progress-widget_group">
+            <div class="progress-widget_value">
+              <p>5<span>8</span></p>
+              <p>kPa</p>
+            </div>
+
+            <div class="progress-wheel_button_wrapper">
+              <button class="progress-wheel_button">
+                <img src="icons/plus_large.svg" /> <br />
+                ADD
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -293,3 +293,119 @@ graphWidgetBars.forEach((bar) => {
   const randomHeight = Math.floor(Math.random() * 101);
   bar.style.height = randomHeight + "%";
 });
+
+// Progress Widget
+function updateProgressWidget() {
+  const widget = document.getElementById("progressWidget");
+  if (!widget) return;
+
+  const valueEl = widget.querySelector(".progress-widget_value");
+  const circle = widget.querySelector(".progress-widget_fill");
+
+  if (!valueEl || !circle) return;
+
+  const value = parseFloat(valueEl.textContent);
+  const max = parseFloat(widget.dataset.max);
+  const percentage = Math.min(value / max, 1);
+
+  const pathLength = circle.getTotalLength();
+  const fillLength = percentage * pathLength;
+
+  circle.style.strokeDasharray = `${fillLength} ${pathLength}`;
+}
+
+updateProgressWidget();
+
+/// Select Item
+
+const selectContainer = document.getElementById("customSelect");
+const selectedItem = selectContainer.querySelector(".select-item");
+const dropdown = selectContainer.querySelector(".select-item_dropdown");
+
+selectedItem.addEventListener("click", () => {
+  dropdown.classList.toggle("hidden");
+});
+
+dropdown.querySelectorAll(".select-item_dropdown-item").forEach((item) => {
+  item.addEventListener("click", () => {
+    const data = item.querySelector(".select-item_data").innerHTML;
+    selectedItem.querySelector(".select-item_data").innerHTML = data;
+
+    dropdown.classList.add("hidden");
+
+    dropdown
+      .querySelectorAll(".select-item_dropdown-item")
+      .forEach((i) => i.classList.remove("selected"));
+    item.classList.add("selected");
+  });
+});
+
+document.addEventListener("click", (e) => {
+  if (!selectContainer.contains(e.target)) {
+    dropdown.classList.add("hidden");
+  }
+});
+
+// Scroll
+
+function makeScroll({ handle, bar, selectList }) {
+  let dragging = false;
+  const scrollContainer = document.getElementById("scrollContainer");
+  const items = selectList.querySelectorAll(".select-item_dropdown-item");
+  if (items.length <= 5) {
+    scrollContainer.style.display = "none";
+
+    return; //
+  } else {
+    scrollContainer.style.display = "block";
+  }
+  function updateScrollFromSlider() {
+    const barRect = bar.getBoundingClientRect();
+    const handleRect = handle.getBoundingClientRect();
+    const handleCenter = parseInt(handle.style.top) || handleRect.height / 2;
+    const handlePosition = handleCenter - handleRect.height / 2;
+
+    const maxHandlePosition = barRect.height - handleRect.height;
+    const scrollPercentage =
+      maxHandlePosition > 0 ? handlePosition / maxHandlePosition : 0;
+
+    const maxScroll = selectList.scrollHeight - selectList.clientHeight;
+    selectList.scrollTop = scrollPercentage * maxScroll;
+  }
+
+  handle.addEventListener("mousedown", () => {
+    dragging = true;
+    document.body.style.userSelect = "none";
+  });
+
+  document.addEventListener("mouseup", () => {
+    dragging = false;
+    document.body.style.userSelect = "auto";
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+
+    const barRect = bar.getBoundingClientRect();
+    const handleRect = handle.getBoundingClientRect();
+    const handleHalf = handleRect.height / 2;
+
+    let y = e.clientY - barRect.top;
+    y = Math.max(handleHalf, Math.min(y, barRect.height - handleHalf));
+
+    handle.style.top = `${y}px`;
+    updateScrollFromSlider();
+  });
+
+  selectList.addEventListener("scroll", () => {
+    if (!dragging) {
+      updateSliderFromScroll();
+    }
+  });
+}
+
+makeScroll({
+  handle: document.getElementById("scrollHandle"),
+  bar: document.getElementById("scrollPrimary"),
+  selectList: document.querySelector(".select-item_list"),
+});
